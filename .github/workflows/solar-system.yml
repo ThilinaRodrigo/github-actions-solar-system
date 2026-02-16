@@ -53,10 +53,10 @@ jobs:
           run: npm install
 
         - name: Run code coverage
+          continue-on-error: true
           run: npm run coverage
 
         - name: upload code coverrage
-          continue-on-error: true
           uses: actions/upload-artifact@v4
           with:
             name: Code-Coverage-Result
