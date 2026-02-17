@@ -24,6 +24,12 @@ jobs:
           with:
             node-version: 18
     
+        - name: Cache NPM dependencies
+          uses: actions/Cache@v4
+          with:
+            path: ~/.npm
+            key:  '${{ runner.os }}-node-modules-${{ hashFiles(''package-lock.json'') }}'
+
         - name: Install Dependencies
           run: npm install
     
@@ -31,7 +37,7 @@ jobs:
           run: npm test
           
         - name: Archive Test Result
-          if: always()      #added
+          if: always()     
           uses: actions/upload-artifact@v4
           with:
             name: Mocha-Test-Result
@@ -48,6 +54,12 @@ jobs:
           uses: actions/setup-node@v4
           with:
             node-version: 18
+            
+        - name: Cache NPM dependencies
+          uses: actions/Cache@v4
+          with:
+            path: ~/.npm
+            key:  '${{ runner.os }}-node-modules-${{ hashFiles(''package-lock.json'') }}'
     
         - name: Install Dependencies
           run: npm install
