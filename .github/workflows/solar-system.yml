@@ -100,5 +100,5 @@ jobs:
           with:
             context: .
             push: true
-            tags: 'tags: ghcr.io/thilinarodrigo/solar-system:${{ github.sha }}'
+            tags: 'tags:ghcr.io/thilinarodrigo/solar-system:${{ github.sha }}'
 
